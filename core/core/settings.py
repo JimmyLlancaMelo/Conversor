@@ -20,8 +20,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'Home',
-    'Contacto',
+    'Home.apps.HomeConfig',
+    'Contacto.apps.ContactoConfig',
 ]
 
 MIDDLEWARE = [
@@ -106,3 +106,12 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Configuración del correo electrónico
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'windowsrevolutions501@gmail.com'  # Cambia esto a tu correo
+EMAIL_HOST_PASSWORD = 'zzja lshu nswm wzks'  # Cambia esto a tu contraseña
+DEFAULT_FROM_EMAIL = 'windowsrevolutions501@gmail.com'

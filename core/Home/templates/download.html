@@ -1,0 +1,30 @@
+{% extends 'Base.html' %}
+{% block contenido %}
+
+<h1>Resultados de Conversión</h1>
+
+<h3>Enlaces de descarga (MP4)</h3>
+<ul>
+    {% for enlace in enlaces_mp4 %}
+        <li>
+            <a href="{{ enlace.url }}">Descargar {{ enlace.resolucion }}p (Tamaño: {{ enlace.tamaño }})</a>
+        </li>
+    {% empty %}
+        <li>No hay enlaces disponibles.</li>
+    {% endfor %}
+</ul>
+
+<h3>Enlaces de descarga (MP3)</h3>
+<ul>
+    {% for enlace in enlaces_mp3 %}
+        <li>
+            <a href="{{ enlace.url }}">Descargar MP3 (Tamaño: {{ enlace.tamaño }})</a>
+        </li>
+    {% empty %}
+        <li>No hay enlaces disponibles.</li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'home:home' %}">Volver</a>
+
+{% endblock %}

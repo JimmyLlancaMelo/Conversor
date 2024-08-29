@@ -1,11 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h2>Aqui va el contacto</h2>
-</body>
-</html>
+{% extends 'Base.html' %}
+{% load static %}
+{% block css %} 
+<link rel="stylesheet" href="{% static 'Contacto/css/estilos.css' %}">
+{% endblock %}
+
+{% block contenido %}
+<div class="container">
+    <h1 class="row justify-content-center mt-3 mb-5">Contáctanos</h1>
+    <div class="row">
+
+        <div class="col-lg-6 ">
+            <img src="{% static 'Contacto/img/Social_2.jpg' %}" alt="" class="card-img">
+        </div>
+
+        <div class="col-lg-6">
+
+            <form method="post"> {% csrf_token %}
+                
+                <div class="row mb-3">
+                    <div class="col-lg-3 form-label">
+                        <span class="input-group-text"> <i class="bi bi-person" style="padding-right: 10px;"></i> Nombre</span>
+                    </div>
+                    <div class="col-lg-9">
+                        {{ form.nombre|safe }}
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-lg-3 form-label">
+                        <span class="input-group-text"> <i class="bi bi-envelope" style="padding-right: 10px;"></i>Email</span>
+                    </div>
+                    <div class="col-lg-9">
+                        {{ form.email|safe }}
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-lg-3 form-label">
+                        <span class="input-group-text"> <i class="bi bi-pencil" style="padding-right: 10px;"></i>Mensaje</span>
+                    </div>
+                    <div class="col-lg-9">
+                        {{ form.mensaje|safe }}
+                    </div>
+                </div>
+                <div class="row mb-3 justify-content-center ">
+                    <input type="submit" class="col-4 btn btn-primary" value="Enviar">
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+</div>
+{% endblock %}

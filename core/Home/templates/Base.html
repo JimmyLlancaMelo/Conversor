@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/icons/font/bootstrap-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fonts.css' %}">
+    {% block css %}{% endblock %}
+</head>
+<body>
+
+<header>
+  
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+
+      
+      <div class="navbar-brand d-flex align-items-center justify-content-center" href="#">
+        <a href="" class="d-lg-none bi bi-person-circle" style="font-size: 1.5rem; padding-right: 0.5em;"></a>
+        <span>Convertidor PRO</span>
+      </div>
+      
+      <button class="navbar-toggler navbar-toggler-icon" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"></button>
+      
+      <div class="collapse navbar-collapse" id="navbarNav">
+
+        <ul class="navbar-nav">
+          <li class="nav-item"><a href="{% url 'home:home' %}" class="nav-link">Home</li></a>
+          <li class="nav-item"><a href="{% url 'contacto:contacto' %}" class="nav-link">Contacto</li></a>
+          <li class="nav-item"><a class="nav-link">Acerca de</li></a>
+        </ul>
+      </div>
+
+      <div class="collapse navbar-collapse justify-content-end me-4">
+        <span class="row align-items-center">
+          <i class="col bi bi-person-circle" style="font-size: 1.5rem;padding-right:0px;"></i>
+          <span class="col">Usuario</span>
+        </span>
+      </div>
+
+    </div>
+
+
+  </nav>
+
+</header>
+    
+    <div>
+        {% block contenido %}{% endblock %}
+    </div>
+
+    <footer class="bg-body-tertiary text-center">
+        <div class="container p-4 pb-0">
+          <section class="mb-4">
+            <!-- Facebook -->
+            <a
+              class="btn text-white btn-floating m-1"
+              style="background-color: #3b5998;"
+              href="#!"
+              role="button"
+              ><i class="bi bi-facebook"></i
+            ></a>
+
+            <!-- Github -->
+            <a
+              class="btn text-white btn-floating m-1"
+              style="background-color: #333333;"
+              href="#!"
+              role="button"
+              ><i class="bi bi-github"></i
+            ></a>
+          </section>
+        </div>
+
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+          <span>© 2024 Copyright</span>
+        </div>
+
+      </footer>
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>
