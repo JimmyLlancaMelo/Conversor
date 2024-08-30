@@ -11,32 +11,40 @@ class toolVideo:
         with yt_dlp.YoutubeDL({'quiet': True}) as ydl:
             info = ydl.extract_info(self.url, download=False) # SE OBTIENE LA INFORMACION EN UN DICCIONARIO
 
-            
             for i in info['formats']: # SE OBTIENEN VARIOS FORMATOS - formad_id, url, ext, acodec, vcodec, filesize, abr, etc
 
                 self.listaVideo.append(i.get("height","desconocido")) # OPTENER CALIDAD DE 1080p 720p 480p 360p 240p
                 self.listaAudio.append(i.get("abr","desconocido")) # OBTENER CALIDAD DE 320kbs 192kbs 128kbs
 
             # QUITAR DUPLICADOS
-            listaSinDuplicadosVideo = list(set(self.listaVideo))
-            listaSinDuplicadosAudio = list(set(self.listaAudio))
-            
-            # DEJAR NUMEROS Y DECIMALES
-            self.soloNumeroVideo = [i for i in listaSinDuplicadosVideo if isinstance(i,int)]
-            self.soloNumeroAudio = [i for i in listaSinDuplicadosAudio if isinstance(i,float)]
-            
-            print(self.soloNumeroVideo)
-            print(self.soloNumeroAudio)
+            self.listaVideo = list(set(self.listaVideo))
+            self.listaAudio = list(set(self.listaAudio))
 
-    def download(self, choice, choice2,choice3):
+            # DEJAR NUMEROS Y DECIMALES
+            self.listaVideo = list(i for i in self.listaVideo if isinstance(i,int))
+            self.listaAudio = list(i for i in self.listaAudio if isinstance(i,float))
+            
+            # ORDENAR
+            self.listaVideo.sort(reverse=True) # DE MAYOR A MENOR
+            self.listaAudio.sort(reverse=True)
+            
+            # FILTRAR
+            self.listaVideo = [i for i in self.listaVideo if i > 100] # ELIMINAMOS ELEMENTOS MENORES A 100
+            del self.listaAudio[3:len(self.listaAudio)] # ELIMINAMOS ELEMENTOS A PARTIR DEL INDICE 3 EN ADELANTE
+            self.listaAudio[:3] = [320,192,128] # REEMPLAZAMOS LOS ELEMENTOS
+            
+            print(self.listaVideo)
+            print(self.listaAudio)
+
+    def download(self, choice1, choice2,choice3):
         
-        if choice == 1:
+        if choice1 == 1:
             ydl_opts = {
                 'format': 'bestaudio/best',
                 'postprocessors': [{
                     'key': 'FFmpegExtractAudio',
                     'preferredcodec': 'mp3',
-                    'preferredquality': f'{self.soloNumeroAudio[choice2]}',
+                    'preferredquality': f'{self.listaAudio[choice2]}',
                 }],
                 'extractaudio': True,
                 'outtmpl': '%(title)s.%(ext)s',
@@ -44,7 +52,7 @@ class toolVideo:
             
         else:
             ydl_opts = {
-                'format': f'bestvideo[height<={self.soloNumeroVideo[choice3]}]+bestaudio/best',
+                'format': f'bestvideo[height<={self.listaVideo[choice3]}]+bestaudio/best',
                 'merge_output_format': 'mp4',
                 'outtmpl': '%(title)s.%(ext)s',
                 'postprocessors': [{
@@ -60,11 +68,9 @@ class toolVideo:
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             ydl.download([self.url])
 
-
-# Ejemplo de uso
-call = toolVideo('https://www.youtube.com/watch?v=VBKqpdmg0B4')
+call = toolVideo('https://www.youtube.com/watch?v=Bma-C2lposk')
 call.Info()
-choice = int(input("Selecciona la calidad para descargar: "))
+choice1 = int(input("Selecciona la calidad para descargar: "))
 choice2 = int(input("Elige la calidad de audio: "))
 choice3 = int(input("Elige la calidad de video: "))
-call.download(choice,choice2,choice3)
+call.download(choice1,choice2,choice3)
