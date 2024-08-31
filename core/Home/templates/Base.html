@@ -8,20 +8,20 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'bootstrap/icons/font/bootstrap-icons.css' %}">
-    <link rel="stylesheet" href="{% static 'css/fonts.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Base.css' %}">
     {% block css %}{% endblock %}
 </head>
 <body>
 
 <header>
   
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
 
       
       <div class="navbar-brand d-flex align-items-center justify-content-center" href="#">
-        <a href="" class="d-lg-none bi bi-person-circle" style="font-size: 1.5rem; padding-right: 0.5em;"></a>
-        <span>Convertidor PRO</span>
+        <a href="" class="d-lg-none bi bi-person-circle text-light" style="font-size: 2rem; padding-right: 0.5em;"></a>
+        <span class="font-monospace fw-bold">CONVERTIDOR FREE</span>
       </div>
       
       <button class="navbar-toggler navbar-toggler-icon" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"></button>
@@ -36,15 +36,14 @@
       </div>
 
       <div class="collapse navbar-collapse justify-content-end me-4">
-        <span class="row align-items-center">
-          <i class="col bi bi-person-circle" style="font-size: 1.5rem;padding-right:0px;"></i>
-          <span class="col">Usuario</span>
+        <span class="row align-items-center text-light">
+          <i class="col bi bi-person-circle" style="font-size: 2rem;padding-right:10px;"></i>
+          <a class="col btn btn-light">Login</a>
         </span>
       </div>
 
     </div>
-
-
+    
   </nav>
 
 </header>
@@ -53,34 +52,14 @@
         {% block contenido %}{% endblock %}
     </div>
 
-    <footer class="bg-body-tertiary text-center">
-        <div class="container p-4 pb-0">
-          <section class="mb-4">
-            <!-- Facebook -->
-            <a
-              class="btn text-white btn-floating m-1"
-              style="background-color: #3b5998;"
-              href="#!"
-              role="button"
-              ><i class="bi bi-facebook"></i
-            ></a>
+    <footer class="container-fluid text-center">
 
-            <!-- Github -->
-            <a
-              class="btn text-white btn-floating m-1"
-              style="background-color: #333333;"
-              href="#!"
-              role="button"
-              ><i class="bi bi-github"></i
-            ></a>
-          </section>
-        </div>
+      <div class="font-monospace row justify-content-center">
+        <h4>© 2024 toolConverter</h4>
+        <p>Todos los derechos reservados</p>
+      </div>
 
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
-          <span>© 2024 Copyright</span>
-        </div>
-
-      </footer>
+    </footer>
     <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 </body>
 </html>

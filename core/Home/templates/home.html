@@ -4,13 +4,15 @@
 
 {% block contenido %}
 
-<div class="container">
-    <div class="row text-center">
-        <h1>Convierte tu video favorito a MP3 / MP4</h1>
-    </div>
-    <div class="row">
-        <form class="row  justify-content-center" action="" method="post">
-            <div class="col-lg-9">
+<div class="container-fluid">
+
+    <div class="home-1 row justify-content-center px-lg-5">
+        <div class="row text-center justify-content-center">
+            <h1 class="fw-bold font-monospace">Convierte tu video favorito a MP3 / MP4</h1>
+            <p class="col-12 col-lg-6">Convierte videos de YouTube a MP3 y MP4 de forma rápida y sencilla con nuestra herramienta. Obtén la mejor calidad en audio y video con unos pocos clics.</p>
+        </div>
+        <form class="row justify-content-center" action="" method="post">
+            <div class="col-lg-9 mb-2">
                 <input class="form-control" type="text">
             </div>
             <div class="col-lg-3">
@@ -18,24 +20,30 @@
             </div>
         </form>
     </div>
+    <!--
     <div class="row">
-        <h2>Apoyanos comprandonos un cafe</h2>
+        <h2>¡Ayúdanos a seguir adelante con tu apoyo! Compra un café.</h2>
     </div>
-    <div class="row">
+    
+    <div class="row justify-content-around">
         <div class="row">
-            <div class="col">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/RKU0WS1sBrk?si=U80ceOVGJuJB9I3S" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+            <div class="col-lg-6">
+                <iframe class="card-img" width="560" height="315" src="https://www.youtube.com/embed/RKU0WS1sBrk?si=U80ceOVGJuJB9I3S" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
-            <div class="col">
-                <div class="row">
+
+            <div class="col-lg-6">
+                <div class="row text-center">
                     <h1>ESTO ES EL TITULO DEL VIDEO</h1>
                 </div>
+
                 <div class="row">
+
                     <div class="col">
                         <h4 class="row justify-content-center">Archivo Audio</h4>
-                        <table class="row table">
-                            <thead>
-                                <tr class="justify-content-center">
+                        <table class="col table table-striped">
+                            <thead class="text-center">
+                                <tr>
                                     <th>Calidad</th>
                                     <th>Formato</th>
                                     <th>Download</th>
@@ -46,15 +54,29 @@
                             </tbody>
                         </table>
                     </div>
+
                     <div class="col">
-                        <p>descargar mp4</p>
+                        <h4 class="row justify-content-center">Archivo Video</h4>
+                        <table class="col table table-striped">
+                            <thead class="text-center">
+                                <tr>
+                                    <th>Calidad</th>
+                                    <th>Formato</th>
+                                    <th>Download</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
                     </div>
+
                 </div>
 
             </div>
 
         </div>
-    </div>
+    </div> -->
 </div>
 
 {% endblock %}

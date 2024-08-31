@@ -1,35 +1,4 @@
-section {
-    background-color: #f8f9fa; /* Color de fondo claro */
-    padding: 2rem 0; /* Espaciado vertical */
-  }
-  
-  h1 {
-    color: #007bff; /* Color del título */
-  }
-  
-.content-box {
-  background-color: #ffffff; /* Color de fondo blanco para las cajas */
-  border-radius: 8px; /* Bordes redondeados */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidad */
-}
-
-.video-platforms-container,
-.video-types-container{
-  border: 1px #007bff solid;
-  border-radius: 15px; /* Bordes redondeados */
-  padding: 20px; /* Espaciado interno */
-}
-
-.benefits-container{
-  border: 1px green solid;
-  border-radius: 15px; /* Bordes redondeados */
-  padding: 20px; /* Espaciado interno */
-}
-
-.video-platforms-container ul,
-.video-types-container ul,
-.benefits-container ul {
-  list-style: none; /* Elimina viñetas */
-  padding: 0; /* Elimina padding */
-  text-align: left;
+.home-1{
+    padding: 10em 0 10em 0;
+    color: black;
 }
