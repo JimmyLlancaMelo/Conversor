@@ -3,13 +3,13 @@
 }
 
 body {
-    font-family: "Roboto", "Open Sans",system-ui;
+    font-family: "Bahnschrift Light", "Open Sans",system-ui;
 }
 
 /* BARRA DE NAVEGACION */
 
 header{
-    background-color: #274c77;
+    background-color: #2f3bdf;
 
 }
 
@@ -18,7 +18,7 @@ header{
 }
 
 .navbar-nav a {
-    color:#ffffff;
+    color:white;
 }
 
 .navbar-brand span{
@@ -37,7 +37,7 @@ header{
 
 footer div{
     color: white;
-    background-color: #274c77;
+    background-color: #5619ff;
     padding: 1.5em;
 }
 

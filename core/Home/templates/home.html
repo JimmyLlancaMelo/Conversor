@@ -11,16 +11,17 @@
             <h1 class="fw-bold font-monospace">Convierte tu video favorito a MP3 / MP4</h1>
             <p class="col-12 col-lg-6">Convierte videos de YouTube a MP3 y MP4 de forma rápida y sencilla con nuestra herramienta. Obtén la mejor calidad en audio y video con unos pocos clics.</p>
         </div>
-        <form class="row justify-content-center" action="" method="post">
+        <form class="row justify-content-center" method="post"> {% csrf_token %}
+            <input type="hidden" name="action" value="form1">
             <div class="col-lg-9 mb-2">
-                <input class="form-control" type="text">
+                <input class="form-control" type="text" name="urlYoutube">
             </div>
             <div class="col-lg-3">
-                <input class='form-control btn btn-primary' type="submit" value="Convertir">
+                <input class='form-control btn btn-danger' type="submit" value="Convertir">
             </div>
         </form>
     </div>
-    <!--
+    
     <div class="row">
         <h2>¡Ayúdanos a seguir adelante con tu apoyo! Compra un café.</h2>
     </div>
@@ -50,7 +51,13 @@
                                 </tr>
                             </thead>
                             <tbody>
-
+                                {% for i in calidad %}
+                                <tr>
+                                    <th>{{i}}</th>
+                                    <th>MP3</th>
+                                    <th><form method="post"><input type="submit" value="download">{% csrf_token %}<input type="hidden" name="action" value="form2"></form></th>
+                                </tr>
+                                {% endfor %}
                             </tbody>
                         </table>
                     </div>
@@ -76,7 +83,7 @@
             </div>
 
         </div>
-    </div> -->
+    </div>
 </div>
 
 {% endblock %}
