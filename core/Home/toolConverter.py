@@ -4,12 +4,15 @@ class toolVideo:
     
     def __init__(self, url):
         self.url = url
+        self.title = ""
         self.listaVideo = []
         self.listaAudio = []
 
     def Info(self):
         with yt_dlp.YoutubeDL({'quiet': True}) as ydl:
             info = ydl.extract_info(self.url, download=False) # SE OBTIENE LA INFORMACION EN UN DICCIONARIO
+
+            self.title = info['title']
 
             for i in info['formats']: # SE OBTIENEN VARIOS FORMATOS - formad_id, url, ext, acodec, vcodec, filesize, abr, etc
 

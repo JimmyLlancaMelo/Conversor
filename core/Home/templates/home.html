@@ -26,64 +26,7 @@
         <h2>¡Ayúdanos a seguir adelante con tu apoyo! Compra un café.</h2>
     </div>
     
-    <div class="row justify-content-around">
-        <div class="row">
-
-            <div class="col-lg-6">
-                <iframe class="card-img" width="560" height="315" src="https://www.youtube.com/embed/RKU0WS1sBrk?si=U80ceOVGJuJB9I3S" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            </div>
-
-            <div class="col-lg-6">
-                <div class="row text-center">
-                    <h1>ESTO ES EL TITULO DEL VIDEO</h1>
-                </div>
-
-                <div class="row">
-
-                    <div class="col">
-                        <h4 class="row justify-content-center">Archivo Audio</h4>
-                        <table class="col table table-striped">
-                            <thead class="text-center">
-                                <tr>
-                                    <th>Calidad</th>
-                                    <th>Formato</th>
-                                    <th>Download</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for i in calidad %}
-                                <tr>
-                                    <th>{{i}}</th>
-                                    <th>MP3</th>
-                                    <th><form method="post"><input type="submit" value="download">{% csrf_token %}<input type="hidden" name="action" value="form2"></form></th>
-                                </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div class="col">
-                        <h4 class="row justify-content-center">Archivo Video</h4>
-                        <table class="col table table-striped">
-                            <thead class="text-center">
-                                <tr>
-                                    <th>Calidad</th>
-                                    <th>Formato</th>
-                                    <th>Download</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-
-                            </tbody>
-                        </table>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-    </div>
+    
 </div>
 
 {% endblock %}

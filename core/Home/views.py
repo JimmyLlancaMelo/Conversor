@@ -14,7 +14,6 @@ class Home(View):
 
     def post(self, request):
         URLYOUTUBE.append(request.POST.get('urlYoutube', ''))
-        print(URLYOUTUBE)
         
         action = request.POST.get('action', '')
         
@@ -23,14 +22,22 @@ class Home(View):
 
             urlVideo.Info()
             context = {
-                'calidad': urlVideo.listaAudio
+                'calidadAudio': urlVideo.listaAudio,
+                'calidadVideo': urlVideo.listaVideo,
+                'titulo': urlVideo.title
             }
-            return render(request, 'home.html', context)
+            return render(request, 'download.html', context)
 
         elif action == 'form2':
-            print(URLYOUTUBE)
+
             urlVideo = toolVideo(URLYOUTUBE[0])
             urlVideo.Info()
-            urlVideo.download(1,urlVideo.listaAudio[0],2)
+            urlVideo.download(1,1,2)
         
         return redirect('home:home')
+    
+class Download(View):
+
+    def get(self, request):
+
+        return render(request, 'download.html')
