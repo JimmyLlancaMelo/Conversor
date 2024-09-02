@@ -7,7 +7,10 @@
     <div class="row">
 
         <div class="col-lg-6">
-            <iframe class="card-img" width="560" height="315" src="https://www.youtube.com/embed/RKU0WS1sBrk?si=U80ceOVGJuJB9I3S" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <div class="ratio ratio-16x9">
+                {{url|safe}}
+            </div>
+            
         </div>
 
         <div class="col-lg-6">
@@ -30,9 +33,16 @@
                         <tbody>
                             {% for i in calidadAudio %}
                             <tr>
-                                <th>{{i}}</th>
+                                <th name="valAudio">{{i}}</th>
                                 <th>MP3</th>
-                                <th><form method="post"><input type="submit" value="download">{% csrf_token %}<input type="hidden" name="action" value="form2"></form></th>
+                                <th>
+                                    <form method="post">{% csrf_token %}
+                                        <input type="submit" value="download">
+                                        <input type="hidden" name="action" value="form2">
+                                        <input type="hidden" name="indexG" value="{{forloop.counter0}}">
+                                        <input type="hidden" name="format" value="mp3">
+                                    </form>
+                                </th>
                             </tr>
                             {% endfor %}
                         </tbody>
@@ -50,7 +60,20 @@
                             </tr>
                         </thead>
                         <tbody>
-
+                            {% for i in calidadVideo %}
+                            <tr>
+                                <th>{{i}}</th>
+                                <th>MP4</th>
+                                <th>
+                                    <form method="post">{% csrf_token %}
+                                        <input type="submit" value="download">
+                                        <input type="hidden" name="action" value="form2">
+                                        <input type="hidden" name="indexG" value="{{forloop.counter0}}">
+                                        <input type="hidden" name="format" value="mp4">
+                                    </form>
+                                </th>
+                            </tr>
+                            {% endfor %}
                         </tbody>
                     </table>
                 </div>

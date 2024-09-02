@@ -1,4 +1,4 @@
 from django.contrib import admin
-from .models import Archivo
+from .models import fileYoutube
 
-admin.site.register(Archivo)
+admin.site.register(fileYoutube)

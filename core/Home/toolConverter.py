@@ -1,4 +1,5 @@
 import yt_dlp
+import re
 
 class toolVideo:
     
@@ -18,7 +19,7 @@ class toolVideo:
 
                 self.listaVideo.append(i.get("height","desconocido")) # OPTENER CALIDAD DE 1080p 720p 480p 360p 240p
                 self.listaAudio.append(i.get("abr","desconocido")) # OBTENER CALIDAD DE 320kbs 192kbs 128kbs
-
+                
             # QUITAR DUPLICADOS
             self.listaVideo = list(set(self.listaVideo))
             self.listaAudio = list(set(self.listaAudio))
@@ -39,26 +40,25 @@ class toolVideo:
             print(self.listaVideo)
             print(self.listaAudio)
 
-    def download(self, choice1, choice2,choice3):
-        print(self.url)
-        print(self.listaVideo)
-        if choice1 == 1:
+    def download(self, choice1, choice2):
+
+        if choice1 == 'mp3':
             ydl_opts = {
                 'format': 'bestaudio/best',
                 'postprocessors': [{
                     'key': 'FFmpegExtractAudio',
                     'preferredcodec': 'mp3',
-                    'preferredquality': f'{self.listaAudio[choice2]}',
+                    'preferredquality': f'{self.listaAudio[int(choice2)]}',
                 }],
                 'extractaudio': True,
-                'outtmpl': '%(title)s.%(ext)s',
+                'outtmpl': 'media/fileYoutube/%(title)s.%(ext)s',
             }
             
         else:
             ydl_opts = {
-                'format': f'bestvideo[height<={self.listaVideo[choice3]}]+bestaudio/best',
+                'format': f'bestvideo[height<={self.listaVideo[int(choice2)]}]+bestaudio/best',
                 'merge_output_format': 'mp4',
-                'outtmpl': '%(title)s.%(ext)s',
+                'outtmpl': 'media/fileYoutube/%(title)s.%(ext)s',
                 'postprocessors': [{
                     'key': 'FFmpegVideoConvertor',
                     'preferedformat': 'mp4',
@@ -71,3 +71,12 @@ class toolVideo:
             }
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             ydl.download([self.url])
+    
+    def Iframe(self):
+        
+        match = re.search(r'(?:v=|\/|shorts\/|embed\/)([a-zA-Z0-9_-]{11})', self.url)
+        if match:
+            video_id = match.group(1)
+            iframe_code = f'<iframe width="560" height="315" src="https://www.youtube.com/embed/{video_id}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+            return iframe_code
+        return None
