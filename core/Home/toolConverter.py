@@ -1,5 +1,5 @@
 import yt_dlp
-import re
+import re, uuid
 
 class toolVideo:
     
@@ -41,7 +41,8 @@ class toolVideo:
             print(self.listaAudio)
 
     def download(self, choice1, choice2):
-
+        unique_id = str(uuid.uuid4())  # Generar un UUID único
+        
         if choice1 == 'mp3':
             ydl_opts = {
                 'format': 'bestaudio/best',
@@ -51,14 +52,14 @@ class toolVideo:
                     'preferredquality': f'{self.listaAudio[int(choice2)]}',
                 }],
                 'extractaudio': True,
-                'outtmpl': 'media/fileYoutube/%(title)s.%(ext)s',
+                'outtmpl': f'media/fileYoutube/%(title)s_{unique_id}.%(ext)s',
             }
             
         else:
             ydl_opts = {
                 'format': f'bestvideo[height<={self.listaVideo[int(choice2)]}]+bestaudio/best',
                 'merge_output_format': 'mp4',
-                'outtmpl': 'media/fileYoutube/%(title)s.%(ext)s',
+                'outtmpl': f'media/fileYoutube/%(title)s_{unique_id}.%(ext)s',
                 'postprocessors': [{
                     'key': 'FFmpegVideoConvertor',
                     'preferedformat': 'mp4',
@@ -69,6 +70,7 @@ class toolVideo:
                     '-b:a', '320k'
                 ],
             }
+        
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             ydl.download([self.url])
     
@@ -80,3 +82,15 @@ class toolVideo:
             iframe_code = f'<iframe width="560" height="315" src="https://www.youtube.com/embed/{video_id}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
             return iframe_code
         return None
+
+"""
+url1 = 'https://www.youtube.com/shorts/c_ZBoufjaE0'
+url2 = 'https://www.youtube.com/shorts/0Q8q89ZDuJ8'
+
+video1 = toolVideo(url1)
+video2 = toolVideo(url2)
+video1.Info()
+video2.Info()
+video1.download('mp4',0)
+video2.download('mp4',0)
+"""
